@@ -164,8 +164,7 @@ a:focus {
 
     font-family: Georgia, serif;
     font-size: 30px;
-    line-height: 36px;
-    letter-spacing: -1px;
+    line-height: 1.5;
 }
 
 .slide q {
