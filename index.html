@@ -35,7 +35,7 @@
 
 <div id="impress" data-transition-duration="1000">
 
-    <div id="title" class="step" data-x="-1000" data-y="0">
+    <div id="title" class="step" data-x="0" data-y="0" data-scale="5">
         <h1>Real life applications of mathematics</h1>
         <div class='right'>
                 <p><a href='https://twitter.com/dimchansky'>@dimchansky</a></p>
@@ -43,15 +43,15 @@
         </div>        
     </div>
 
-    <div id="intuitive-bayes" class="step" data-x="1000" data-y="0">
+    <div id="intuitive-bayes" class="step" data-x="-4000" data-y="-2000" data-z="0" data-scale="1">
         <h1>An Intuitive Explanation of</h1>
         <h1>Bayes' Theorem</h1>
-        <div class="center"><img src='img/Bayes_Theorem_01.jpg' alt="Bayes' Theorem" width="800" height="auto"></div>
+        <div class="center"><img src='img/Bayes_Theorem_01.jpg' alt="Bayes' Theorem" width="640" height="auto"></div>
     </div>
 
     <!-- http://oscarbonilla.com/2009/05/visualizing-bayes-theorem/ 
          http://yudkowsky.net/rational/bayes -->
-    <div class="step" data-x="1000" data-y="1000" data-rotate="90">                
+    <div class="step" data-x="-3000" data-y="-2000" data-z="0" data-rotate="0" data-scale="1">
         <svg width="640" height="480" xmlns="http://www.w3.org/2000/svg">
          <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
          <g>
@@ -65,7 +65,7 @@
         <p class="center">$$P\left( A \right) =\frac { \left| A \right|  }{ \left| U \right|  }$$</p>
     </div>    
 
-    <div class="step" data-x="1000" data-y="2000" data-rotate="90">
+    <div class="step" data-x="-2000" data-y="-2000" data-z="0" data-rotate="0" data-scale="1">
         <svg width="640" height="480" xmlns="http://www.w3.org/2000/svg">
          <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
          <g>
@@ -78,7 +78,7 @@
         <p class="center">$$P\left( B \right) =\frac { \left| B \right|  }{ \left| U \right|  }$$</p>
     </div>
 
-    <div class="step" data-x="1000" data-y="3000" data-rotate="90">
+    <div class="step" data-x="-1000" data-y="-2000" data-z="0" data-rotate="0" data-scale="1">
         <svg width="640" height="480" xmlns="http://www.w3.org/2000/svg">
          <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
          <g>
@@ -123,6 +123,7 @@
 <div class="hint">
     <p>Use a spacebar or arrow keys to navigate</p>
 </div>
+
 <script>
 if ("ontouchstart" in document.documentElement) { 
     document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
