@@ -361,3 +361,27 @@ a:focus {
     border:solid gray;
     border-width:.1em .1em .1em .1em;
 }
+
+.navBox {
+    position:absolute;
+    position:fixed;
+    bottom:10px;
+    right:10px;
+    z-index:1000;
+}
+.navBox a, .backToDescription {
+    display:inline-block;
+    padding:5px 7px;
+    border:2px solid #eee;
+    border-radius: 4px;
+    color:#0077B3;
+    text-decoration:none;   
+}
+
+.navBox a {
+    margin-left:10px;
+}
+
+.navBox a:hover, .backToDescription:hover {
+    background-color:#eee;
+}

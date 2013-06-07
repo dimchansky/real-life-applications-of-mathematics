@@ -120,6 +120,11 @@
     </div>    
 </div>
 
+<div class="navBox">
+  <a href="#" onClick="api.prev();">prev</a>
+  <a href="#" onClick="api.next();">next</a>
+</div>
+
 <div class="hint">
     <p>Use a spacebar or arrow keys to navigate</p>
 </div>
@@ -131,7 +136,10 @@ if ("ontouchstart" in document.documentElement) {
 </script>
 
 <script src="js/impress.js"></script>
-<script>impress().init();</script>
+<script>
+  var api = impress();
+  api.init();
+</script>
 
 </body>
 </html>
