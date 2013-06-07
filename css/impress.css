@@ -249,7 +249,7 @@ a:focus {
     transition:         opacity 1s 5s,         transform 0.5s 4.5s;
 }
 
-.impress-enabled          { pointer-events: none }
+.impress-enabled          { pointer-events: auto }
 .impress-enabled #impress { pointer-events: auto }
 
 #RuntimeProcessing {
