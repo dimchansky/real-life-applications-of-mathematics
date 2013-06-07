@@ -369,7 +369,7 @@ a:focus {
     right:10px;
     z-index:1000;
 }
-.navBox a, .backToDescription {
+.navBox a, .backToHome {
     display:inline-block;
     padding:5px 7px;
     border:2px solid #eee;
@@ -382,6 +382,12 @@ a:focus {
     margin-left:10px;
 }
 
-.navBox a:hover, .backToDescription:hover {
+.navBox a:hover, .backToHome:hover {
     background-color:#eee;
+}
+
+.backToHome {
+    position:fixed;
+    left:10px;
+    bottom:10px;
 }
