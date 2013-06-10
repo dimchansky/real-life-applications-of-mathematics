@@ -263,6 +263,22 @@
       <p>$$ P\left( { e }_{ 1 },e_{ 2 },\dots ,{ e }_{ N } \right) =P\left( { { e }_{ 1 } } \right) \cdot P\left( { { e }_{ 2 } }|{ { e }_{ 1 } } \right) \cdot \dots \cdot P\left( { e_{ N } }|{ e_{ 1 },{ e }_{ 2 },\dots ,{ e }_{ N-1 } } \right) $$</p>
     </div>
 
+    <div class="step slide" data-x="2000" data-y="4000" data-rotate="90" data-scale="1">
+      <h1>Normalization constant</h1>
+      <p>$$ P\left( { { c } }|{ d } \right) =\frac { P\left( { d }|{ c } \right) \cdot P\left( c \right)  }{ P\left( d \right)  } =\alpha \cdot P\left( { d }|{ c } \right) \cdot P\left( c \right) \\ P\left( { { c } }|{ d } \right) \propto P\left( { d }|{ c } \right) \cdot P\left( c \right) $$</p>
+    </div>
+
+    <div class="step slide" data-x="2000" data-y="5000" data-rotate="90" data-scale="1">
+      <h1>Conditional independence assumption</h1>
+      <p>$$ P\left( { { w }_{ 1 },{ w }_{ 2 },\dots ,{ w }_{ { n }_{ d } } }|{ c } \right) =\\ =P\left( { { w }_{ 1 } }|{ c } \right) \cdot P\left( { { w }_{ 2 } }|{ c } \right) \cdot \dots \cdot P\left( { { w }_{ { n }_{ d } } }|{ c } \right) =\\ =\prod _{ i=1 }^{ { n }_{ d } }{ P\left( { { w }_{ i } }|{ c } \right)  } $$</p>
+    </div>
+
+    <div class="step slide" data-x="2000" data-y="6000" data-rotate="90" data-scale="1">
+      <h1>Naive Bayes</h1>
+      <p>$$ P\left( { { c } }|{ d } \right) \propto P\left( { d }|{ c } \right) \cdot P\left( c \right) =\\ =P\left( { { w }_{ 1 },{ w }_{ 2 },\dots ,{ w }_{ { n }_{ d } } }|{ c } \right) \cdot P\left( c \right) =\\ =P\left( c \right) \cdot \prod _{ i=1 }^{ { n }_{ d } }{ P\left( { { w }_{ i } }|{ c } \right) } $$</p>
+      <p>$$ P\left( { { c } }|{ d } \right) \propto P\left( c \right) \cdot \prod _{ i }^{ { n }_{ d } }{ P\left( { { w }_{ i } }|{ c } \right)  } \\ { c }_{ map }=\underset { c\in C }{ argmax } \quad P\left( c \right) \cdot \prod _{ i=1 }^{ { n }_{ d } }{ P\left( { { w }_{ i } }|{ c } \right)  }  $$</p>
+    </div>
+
     <div id="improving-classification" class="step" data-x="3000" data-y="0">
         <h1>Improving text classification</h1>
         <h1>using feature selection</h1>
