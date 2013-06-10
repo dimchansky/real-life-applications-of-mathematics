@@ -384,7 +384,11 @@
     </div>
 
     <div class="step" data-x="2000" data-y="14000" data-rotate="90" data-scale="1">
-      <h1></h1>
+      <h1>Solving the problem of floating point underflow</h1>
+      <p>$$ { c }_{ map }=\underset { c\in C }{ argmax } \quad P\left( c \right) \cdot \prod _{ i=1 }^{ { n }_{ d } }{ P\left( { { w }_{ i } }|{ c } \right)  } $$</p>
+      <p>It's better to perform the computation by adding logarithms of probabilities instead of multiplying probabilities.</p>
+      <p>$$ \log { \left( x\cdot y \right) =\log { \left( x \right)  }  } +\log { \left( y \right)  }  $$</p>
+      <p>$$ { c }_{ map }=\underset { c\in C }{ argmax } \quad \left[ \log { \left( P\left( c \right)  \right) +\sum _{ i=1 }^{ { n }_{ d } }{ \log { \left( P\left( { { w }_{ i } }|{ c } \right)  \right)  }  }  }  \right] $$</p>
     </div>
 
     <div id="improving-classification" class="step" data-x="3000" data-y="0">
