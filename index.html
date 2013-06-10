@@ -240,9 +240,27 @@
         $=\frac { 1\cdot 1\cdot 0.5 }{ 0.75\cdot 0.75 } =0.8$</p>
     </div>
 
-    <div id="text-classification" class="step" data-x="2000" data-y="0">
-        <h1>Text classification</h1>
-        <h1>using Naive Bayes</h1>
+    <div id="text-classification" class="step" data-x="2000" data-y="0" data-rotate="90" data-scale="1">
+      <h1>Text classification</h1>
+      <h1>using Naive Bayes</h1>              
+    </div>
+
+    <div class="step" data-x="2000" data-y="1000" data-rotate="90" data-scale="1">
+      <p>Document: $ d=\left< { { w }_{ 1 },{ w }_{ 2 },\dots ,{ w }_{ { n }_{ d } } } \right> $</p>
+      <p>Document space: $ d\in D $</p>
+      <p>Categories: $ C=\left\{ { c }_{ 1 },{ c }_{ 2 },\dots ,{ c }_{ j } \right\} $</p>
+      <p>Classification function: $$\gamma : D\rightarrow C$$</p>
+    </div>
+
+    <div class="step" data-x="2000" data-y="2000" data-rotate="90" data-scale="1">
+      <h1>MAP: maximum a posteriori</h1>
+      <p>$$ { c }_{ map }=\underset { c\in C }{ argmax } \quad P\left( { { c } }|{ d } \right)  $$</p>
+    </div>
+
+    <div class="step" data-x="2000" data-y="3000" data-rotate="0" data-scale="1">
+      <h1>Straight way approach</h1>
+      <p>$$ P\left( { { c } }|{ d } \right) =\frac { P\left( { d }|{ c } \right) \cdot P\left( c \right)  }{ P\left( d \right)  } =\frac { P\left( { { w }_{ 1 },{ w }_{ 2 },\dots ,{ w }_{ { n }_{ d } } }|{ c } \right) \cdot P\left( c \right)  }{ P\left( { w }_{ 1 },{ w }_{ 2 },\dots ,{ w }_{ { n }_{ d } } \right)  } =\\ =\frac { P\left( { { w }_{ 1 } }|{ c } \right) \cdot P\left( { { w }_{ 2 } }|{ c,{ w }_{ 1 } } \right) \cdot \dots \cdot P\left( { { w }_{ { n }_{ d } } }|{ c,{ w }_{ 1 },{ w }_{ 2 },\dots ,{ w }_{ { n }_{ d }-1 } } \right) \cdot P\left( c \right)  }{ P\left( { { w }_{ 1 } } \right) \cdot P\left( { { w }_{ 2 } }|{ { w }_{ 1 } } \right) \cdot \dots \cdot P\left( { { w }_{ { n }_{ d } } }|{ { w }_{ 1 },{ w }_{ 2 },\dots ,{ w }_{ { n }_{ d }-1 } } \right)  }  $$</p>
+      <p>$$ P\left( { e }_{ 1 },e_{ 2 },\dots ,{ e }_{ N } \right) =P\left( { { e }_{ 1 } } \right) \cdot P\left( { { e }_{ 2 } }|{ { e }_{ 1 } } \right) \cdot \dots \cdot P\left( { e_{ N } }|{ e_{ 1 },{ e }_{ 2 },\dots ,{ e }_{ N-1 } } \right) $$</p>
     </div>
 
     <div id="improving-classification" class="step" data-x="3000" data-y="0">
