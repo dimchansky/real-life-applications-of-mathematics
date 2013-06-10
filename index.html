@@ -279,6 +279,98 @@
       <p>$$ P\left( { { c } }|{ d } \right) \propto P\left( c \right) \cdot \prod _{ i }^{ { n }_{ d } }{ P\left( { { w }_{ i } }|{ c } \right)  } \\ { c }_{ map }=\underset { c\in C }{ argmax } \quad P\left( c \right) \cdot \prod _{ i=1 }^{ { n }_{ d } }{ P\left( { { w }_{ i } }|{ c } \right)  }  $$</p>
     </div>
 
+    <div class="step slide" data-x="2000" data-y="7000" data-rotate="90" data-scale="1">
+      <h1>Example 3</h1>
+      <div>
+        <table border="1">
+          <tr>
+            <th bgcolor="#FF0000"><b>SPAM</b></th>
+            <th bgcolor="#00FF00"><b>HAM</b></th>
+          </tr>
+          <tr>
+            <td style="padding:0 15px 0 15px;">offer is secret</td>
+            <td>play sport today</td>
+          </tr>
+          <tr>
+            <td style="padding:0 15px 0 15px;">click secret link</td>
+            <td>went play sport</td>
+          </tr>
+          <tr>
+            <td style="padding:0 15px 0 15px;">secret sport link</td>
+            <td>secret sport event</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>sport is today</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>sport costs money</td>
+          </tr>
+        </table>
+      </div>
+      <p>$$ P\left( spam \right) =\frac { 3 }{ 3+5 } =\frac { 3 }{ 8 } ,\quad P\left( ham \right) =\frac { 5 }{ 3+5 } =\frac { 5 }{ 8 } $$</p>
+      <p>$$ P\left( { secret }|{ spam } \right) =\frac { 3 }{ 9 } =\frac { 1 }{ 3 } ,\quad P\left( { secret }|{ ham } \right) =\frac { 1 }{ 15 } $$</p>
+      <p>$$ P\left( { sport }|{ spam } \right) =\frac { 1 }{ 9 } ,\quad P\left( { sport }|{ ham } \right) =\frac { 5 }{ 15 } =\frac { 1 }{ 3 } $$</p>
+    </div>
+
+    <div class="step" data-x="2000" data-y="8000" data-rotate="90" data-scale="1">
+      <h1>Example 3.1</h1>
+      <p>$$ P\left( { spam }|secret,sport \right) \propto \\ \propto P\left( { secret }|spam \right) \cdot P\left( sport|spam \right) \cdot P\left( spam \right) $$</p>
+      <p>$$ P\left( { secret }|spam \right) \cdot P\left( sport|spam \right) \cdot P\left( spam \right) = \\=\frac { 1 }{ 3 } \cdot \frac { 1 }{ 9 } \cdot \frac { 3 }{ 8 } =\frac { 1 }{ 72 } $$</p>
+      <p>$$ P\left( { secret }|ham \right) \cdot P\left( sport|ham \right) \cdot P\left( ham \right) = \\=\frac { 1 }{ 15 } \cdot \frac { 1 }{ 3 } \cdot \frac { 5 }{ 8 } =\frac { 1 }{ 72 }  $$</p>
+      <p>$$ P\left( spam|secret,sport \right) =\frac { \frac { 1 }{ 72 }  }{ \frac { 1 }{ 72 } +\frac { 1 }{ 72 }  } =\frac { 1 }{ 2 } $$</p>
+    </div>    
+
+    <div class="step" data-x="2000" data-y="9000" data-rotate="180" data-scale="1">
+      <h1>Houston, we have a problem</h1>
+      <p>$$ P\left( { spam }|today,is,secret \right) =? $$</p>
+      <p>$$ P\left( today|spam \right) \cdot P\left( is|spam \right) \cdot P\left( secret|spam \right) \cdot P\left( spam \right) =\\ =\frac { 0 }{ 9 } \cdot \frac { 1 }{ 9 } \cdot \frac { 3 }{ 9 } \cdot \frac { 3 }{ 8 } =0 $$</p>
+      <p>$$ P\left( today|ham \right) \cdot P\left( is|ham \right) \cdot P\left( secret|ham \right) \cdot P\left( ham \right) =\\ =\frac { 2 }{ 15 } \cdot \frac { 1 }{ 15 } \cdot \frac { 1 }{ 15 } \cdot \frac { 5 }{ 8 } =\frac { 1 }{ 2700 } $$</p>
+      <p>$$ P\left( spam|today,is,secret \right) =\frac { 0 }{ 0 +\frac { 1 }{ 2700 }  } = {0} $$</p>
+    </div>    
+
+    <div id="laplace-smoothing" class="step" data-x="2000" data-y="10000" data-rotate="90" data-scale="1">
+      <h1>Use the Laplace Smoothing, Luke</h1>
+      <p>$ LS\left( k \right) $:</p>
+      <p>$$ P\left( x \right) =\frac { { N }_{ x }+k }{ N+k\cdot \left| X \right|  }  $$</p>
+    </div>
+
+    <div class="step" data-x="2000" data-y="11000" data-rotate="180" data-scale="1">
+      <h1>LS(1)</h1>
+      <div>
+        <table border="1">
+          <tr>
+            <th bgcolor="#FF0000"><b>SPAM</b></th>
+            <th bgcolor="#00FF00"><b>HAM</b></th>
+          </tr>
+          <tr>
+            <td style="padding:0 15px 0 15px;">offer is secret</td>
+            <td>play sport today</td>
+          </tr>
+          <tr>
+            <td style="padding:0 15px 0 15px;">click secret link</td>
+            <td>went play sport</td>
+          </tr>
+          <tr>
+            <td style="padding:0 15px 0 15px;">secret sport link</td>
+            <td>secret sport event</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>sport is today</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>sport costs money</td>
+          </tr>
+        </table>
+      </div>
+      <p>$$ P\left( spam \right) =\frac { 3+1 }{ 8+2 } =\frac { 4 }{ 10 } ,\quad P\left( ham \right) =\frac { 5+1 }{ 8+2 } =\frac { 6 }{ 10 } $$</p>
+      <p>$$ P\left( { secret }|{ spam } \right) =\frac { 3 + 1 }{ 9 + 12 } =\frac { 4 }{ 21 } ,\quad P\left( { secret }|{ ham } \right) =\frac { 1 + 1 }{ 15 + 12 } =\frac { 2 }{ 27 }$$</p>
+      <p>$$ P\left( { sport }|{ spam } \right) =\frac { 1 + 1 }{ 9 + 12} = \frac { 2 }{ 21 },\quad P\left( { sport }|{ ham } \right) =\frac { 5 + 1 }{ 15 + 12 } =\frac { 2 }{ 9 } $$</p>      
+    </div>
+
     <div id="improving-classification" class="step" data-x="3000" data-y="0">
         <h1>Improving text classification</h1>
         <h1>using feature selection</h1>
