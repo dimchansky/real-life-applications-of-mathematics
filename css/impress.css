@@ -397,3 +397,7 @@ a:focus {
     left:10px;
     bottom:10px;
 }
+
+td img {
+    vertical-align:text-top;
+}
