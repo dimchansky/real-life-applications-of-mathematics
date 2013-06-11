@@ -404,14 +404,32 @@
     </div>
 
     <div id="improving-classification" class="step" data-x="4000" data-y="0">
-        <h1>Improving text classification</h1>
-        <h1>using feature selection</h1>        
+      <h1>Improving text classification</h1>
+      <h1>using feature selection</h1>        
     </div>
 
     <div id="spelling-correction" class="step" data-x="6000" data-y="0">
-        <h1>Spelling correction</h1>
-        <h1>using Naive Bayes</h1>
+      <h1>Spelling correction</h1>
+      <h1>using Bayes Theorem</h1>
     </div>
+
+    <div class="step" data-x="6000" data-y="1000" data-rotate="0" data-scale="1">
+      <ul>
+        <li>w - original word</li>
+        <li>c - correction</li>
+      </ul>
+      <p>We are trying to find the correction c, out of all possible corrections, that maximizes the probability of c given the original word w:</p>
+      <p>$$ { argmax }_{ c }\quad P\left( { c }|{ w } \right) $$</p>
+    </div>
+
+    <div class="step" data-x="6000" data-y="2000" data-rotate="0" data-scale="1">
+      <p>By Bayes' Theorem:</p>
+      <p>$$ { argmax }_{ c }\quad P\left( { c }|{ w } \right) =\\ ={ argmax }_{ c }\quad P\left( { w }|c \right) \cdot P\left( c \right)  $$</p>
+      <ul>
+        <li>$ P\left( c \right) $ - the probability that a proposed correction c stands on its own.</li>
+        <li>$ P\left( { w }|c \right) $ - the probability that w would be typed in a text when the author meant c.</li>
+      </ul>
+    </div>    
 
     <div id="decision-trees" class="step" data-x="8000" data-y="0">
         <h1>Decision Trees —</h1>
