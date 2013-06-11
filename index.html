@@ -415,10 +415,10 @@
 
     <div class="step" data-x="6000" data-y="1000" data-rotate="0" data-scale="1">
       <ul>
-        <li>w - original word</li>
-        <li>c - correction</li>
+        <li><b>w</b> - original word</li>
+        <li><b>c</b> - correction</li>
       </ul>
-      <p>We are trying to find the correction c, out of all possible corrections, that maximizes the probability of c given the original word w:</p>
+      <p>We are trying to find the correction <b>c</b>, out of all possible corrections, that maximizes the probability of <b>c</b> given the original word <b>w</b>:</p>
       <p>$$ { argmax }_{ c }\quad P\left( { c }|{ w } \right) $$</p>
     </div>
 
@@ -426,14 +426,31 @@
       <p>By Bayes' Theorem:</p>
       <p>$$ { argmax }_{ c }\quad P\left( { c }|{ w } \right) =\\ ={ argmax }_{ c }\quad P\left( { w }|c \right) \cdot P\left( c \right)  $$</p>
       <ul>
-        <li>$ P\left( c \right) $ - the probability that a proposed correction c stands on its own.</li>
-        <li>$ P\left( { w }|c \right) $ - the probability that w would be typed in a text when the author meant c.</li>
+        <li>$ P\left( c \right) $ - the probability that a proposed correction <b>c</b> stands on its own.</li>
+        <li>$ P\left( { w }|c \right) $ - the probability that <b>w</b> would be typed in a text when the author meant <b>c</b>.</li>
       </ul>
     </div>    
 
+    <div class="step" data-x="6000" data-y="3000" data-rotate="0" data-scale="1">
+      <p>The possible corrections <b>c</b> of a given word <b>w</b></p>
+      <br/>
+      <ul>
+        <li>Deletion (remove one letter)</li>
+        <li>Transposition (swap adjacent letters)</li>
+        <li>Alteration (change one letter to another)</li>
+        <li>Insertion (add a letter)</li>
+      </ul>
+      <br/>
+      <p> For a word of length $n$, there will be $n$ deletions, $n-1$ transpositions, $26\cdot n$ alterations, and $26\cdot \left( n+1 \right)$ insertions, for a total of $54\cdot n+25$ (of which a few are typically duplicates).</p>
+    </div> 
+
+    <div class="step" data-x="6000" data-y="4000" data-rotate="0" data-scale="1">
+
+    </div> 
+
     <div id="decision-trees" class="step" data-x="8000" data-y="0">
-        <h1>Decision Trees —</h1>
-        <h1>What Are They?</h1>
+      <h1>Decision Trees —</h1>
+      <h1>What Are They?</h1>
     </div>
     
     <div id="matrix-decomposition" class="step" data-x="10000" data-y="0">
