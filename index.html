@@ -16,6 +16,18 @@
     
     <link rel="shortcut icon" href="favicon.png" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+	<style type="text/css">
+		.rotate {
+					 filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+				 -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+			 -moz-transform: rotate(-90.0deg);  /* FF3.5+ */
+			  -ms-transform: rotate(-90.0deg);  /* IE9+ */
+			   -o-transform: rotate(-90.0deg);  /* Opera 10.5 */
+		  -webkit-transform: rotate(-90.0deg);  /* Safari 3.1+, Chrome */
+				  transform: rotate(-90.0deg);  /* Standard */
+		}
+	</style>
     
     <script type="text/javascript">
 
@@ -438,11 +450,134 @@
       <p>$$ { c }_{ map }=\underset { c\in C }{ argmax } \quad \left[ \log { \left( P\left( c \right)  \right) +\sum _{ i=1 }^{ { n }_{ d } }{ \log { \left( P\left( { { w }_{ i } }|{ c } \right)  \right)  }  }  }  \right] $$</p>
     </div>
 
-<!--     <div id="improving-classification" class="step" data-x="4000" data-y="0">
+    <div id="improving-classification" class="step" data-x="8000" data-y="0">
       <h1>Improving text classification</h1>
       <h1>using feature selection</h1>        
-    </div> -->
+    </div>	
 
+    <div class="step" data-x="8000" data-y="1000" data-rotate="0" data-scale="1">
+      <h1>Confusion matrix<br/>for a binary classifier</h1>
+		<table border="1">
+		  <tr>
+			<th>&nbsp;</th>
+			<th>&nbsp;</th>
+			<th colspan="2">Actual value</th>
+		  </tr>
+		  <tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td bgcolor="#00FF00" style="padding:0 15px 0 15px;text-align:center">positive<br>(TP+FN)</td>
+			<td bgcolor="#FF0000" style="padding:0 15px 0 15px;text-align:center">negative</td>
+		  </tr>
+		  <tr>
+		    <td rowspan="2"><div class='rotate'>Predicted value</div></td>		  
+			<td bgcolor="#00FF00" style="padding:0 15px 0 15px;text-align:center">positive<br>(TP+FP)</td>
+			<td style="padding:0 15px 0 15px;text-align:center">True positive<br>(TP)</td>
+			<td style="padding:0 15px 0 15px;text-align:center">False positive<br>(FP)</td>
+		  </tr>
+		  <tr>			
+			<td bgcolor="#FF0000" style="padding:0 15px 0 15px;text-align:center">negative</td>
+			<td style="padding:0 15px 0 15px;text-align:center">False negative<br>(FN)</td>
+			<td style="padding:0 15px 0 15px;text-align:center">True negative<br>(TN)</td>
+		  </tr>
+		</table>	  
+    </div>
+
+    <div class="step" data-x="8000" data-y="2000" data-rotate="0" data-scale="1">
+      <h1>Precision</h1>
+	  <p>$$ Precision=P\left( { actual\quad positive }|{ predicted\quad positive } \right) $$
+	     $$ =\frac { TP }{ TP+FP } $$
+	  </p>
+    </div>
+	
+    <div class="step" data-x="8000" data-y="3000" data-rotate="0" data-scale="1">
+      <h1>Recall/Sensitivity</h1>
+	  <p>$$ Recall=P\left( { predicted\quad positive }|{ actual\quad positive } \right) $$
+	     $$ =\frac { TP }{ TP+FN } $$
+	  </p>	  
+    </div>	
+
+    <div class="step" data-x="8000" data-y="4000" data-rotate="0" data-scale="1">
+      <h1>Precision vs. Recall</h1>
+	  <ul>
+		<li>You can always get a recall of 1 (but very low precision) by doing positive prediction for all documents</li>
+		<li>Usually precision decreases as the number of positive predictions is increased</li>
+	  </ul>
+    </div>		
+
+    <div class="step" data-x="8000" data-y="5000" data-rotate="0" data-scale="1">
+      <h1>F-measure</h1>
+	  <p>$$ F=\frac { 1 }{ \alpha \frac { 1 }{ P } +(1-\alpha )\frac { 1 }{ R }  } =\frac { ({ \beta  }^{ 2 }+1)PR }{ { \beta  }^{ 2 }P+R } $$</p>
+	  <p>where </p>
+	  <p>$ \quad { \beta  }^{ 2 }=\frac { 1-\alpha  }{ \alpha  } $</p>	
+	  <p>$ \quad \alpha \in [0,1] $ and thus $ \beta \in [0,\infty ] $</p>
+    </div>
+
+    <div class="step" data-x="8000" data-y="6000" data-rotate="0" data-scale="1">
+      <h1>Balanced F-measure</h1>
+	  <p>$$ { F }_{ 1 }={ F }_{ \beta =1 }=\frac { 2PR }{ P+R }  $$</p>
+	  <ul>
+		<li>The harmonic mean is always less than or equal to the arithmetic mean and the geometric mean</li>
+		<li>When the values of two numbers differ greatly, the harmonic mean is closer to their minimum than to their arithmetic mean</li>
+	  </ul>
+    </div>
+
+    <div class="step" data-x="8000" data-y="7000" data-rotate="0" data-scale="1">
+      <h1>Combinatorial Entropy</h1>
+	  <svg width="640" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+		 <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+		 <g>
+		  <title>Layer 1</title>
+		  <circle fill="#FF0000" stroke-width="5" cx="520" cy="52" r="20" id="svg_1" stroke="#000000"/>
+		  <circle fill="#FF0000" stroke-width="5" cx="406" cy="52" r="20" stroke="#000000" id="svg_2"/>
+		  <circle fill="#00FF00" stroke-width="5" cx="58" cy="52" r="20" stroke="#000000" id="svg_3"/>
+		  <circle id="svg_4" fill="#00FF00" stroke-width="5" cx="230" cy="52" r="20" stroke="#000000"/>
+		  <circle id="svg_5" fill="#00FF00" stroke-width="5" cx="170" cy="52" r="20" stroke="#000000"/>
+		  <circle id="svg_6" fill="#00FF00" stroke-width="5" cx="464" cy="52" r="20" stroke="#000000"/>
+		  <circle id="svg_7" fill="#00FF00" stroke-width="5" cx="579" cy="52" r="20" stroke="#000000"/>
+		  <circle id="svg_8" fill="#ffFF00" stroke-width="5" cx="113" cy="52" r="20" stroke="#000000"/>
+		  <circle fill="#ffFF00" stroke-width="5" cx="290" cy="52" r="20" stroke="#000000" id="svg_9"/>
+		  <circle fill="#ffFF00" stroke-width="5" cx="349" cy="52" r="20" stroke="#000000" id="svg_10"/>
+		 </g>
+	   </svg>
+	   <p>Multinomial coefficient: $$ W=\frac { N! }{ \prod { { N }_{ i }! }  } =\frac { 10! }{ 5!\cdot 3!\cdot 2! } $$</p>
+	   <p>Combinatorial entropy: $${ S }_{ comb }=\frac { \log _{ 2 }{ W }  }{ N } =\frac { 1 }{ N } \log _{ 2 }{ \left( \frac { N! }{ \prod { { N }_{ i }! }  }  \right)  } $$ </p>
+    </div>	
+
+    <div class="step" data-x="8000" data-y="8000" data-rotate="0" data-scale="1">
+      <h1>Shannon entropy</h1>
+	  <p>$ { S }_{ comb }=\frac { 1 }{ N } \log _{ 2 }{ \left( \frac { N! }{ \prod { { N }_{ i }! }  }  \right)  } =\frac { 1 }{ N } \left( \log _{ 2 }{ \left( N! \right)  } -\log _{ 2 }{ \left( \prod { { N }_{ i }! }  \right)  }  \right) $ </p>
+	  <p>Stirling's approximation: $$ \ln { \left( N! \right)  } =N\ln { \left( N \right)  } -N+O\left( \ln { \left( N \right)  }  \right) \approx n\ln { \left( n \right)  } -n $$</p>
+	  <p> $$ { S }_{ comb }\approx -\sum { \left( \frac { { N }_{ i } }{ N } \log _{ 2 }{ \left( \frac { { N }_{ i } }{ N }  \right)  }  \right)  } =-\sum { { p }_{ i }\log _{ 2 }{ { p }_{ i } }  } $$ </p>
+    </div>
+
+    <div class="step" data-x="8000" data-y="9000" data-rotate="0" data-scale="1">
+      <h1>Entropy and <br/>Mutual Information</h1>
+	  <p>$$ H(X)=-\sum _{ x\in X }^{  }{ p(x)\log _{ 2 }{ p(x) }  }  $$</p>
+	  <p>The conditional entropy of X given Y is denoted: $$ H\left( { X }|{ Y } \right) =-\sum _{ y\in Y }^{  }{ p(y) } \sum _{ x\in X }^{  }{ p\left( { x }|{ y } \right) \log _{ 2 }{ p\left( { x }|{ y } \right)  }  }  $$</p>
+	  <p>Mutual Information between X and Y: $$ I(X;Y)=H(X)-H\left( { X }|{ Y } \right) $$ </p>
+	  <p>$$ =\sum _{ x\in X }^{  }{ \sum _{ y\in Y }^{  }{ p(xy)\log _{ 2 }{ \frac { p(xy) }{ p(x)p(y) }  }  }  } $$</p>
+    </div>	
+
+    <div class="step" data-x="8000" data-y="10000" data-rotate="0" data-scale="1">
+      <h1>Mutual Information of <br/>term and class</h1>
+	  <p>$$ I(U,C)=\sum _{ { e }_{ t }\in \left\{ 1,0 \right\}  }^{  }{ \sum _{ { e }_{ c }\in \left\{ 1,0 \right\}  }^{  }{ p(U={ e }_{ t },C={ e }_{ c })\log _{ 2 }{ \frac { p(U={ e }_{ t },C={ e }_{ c }) }{ p(U={ e }_{ t })p(C={ e }_{ c }) }  }  }  }  $$</p>
+	  <p>$ { e }_{ t }=1 $ - the document contains term <i>t</i></p>
+	  <p>$ { e }_{ t }=0 $ - the document does not contain <i>t</i></p>
+	  <p>$ { e }_{ c }=1 $ - the document is in class <i>c</i></p>
+	  <p>$ { e }_{ c }=0 $ - the document is not in class <i>c</i></p>
+    </div>	
+
+    <div class="step" data-x="8000" data-y="11000" data-rotate="0" data-scale="1">		
+		<p class="center"><img src="http://nlp.stanford.edu/IR-book/html/htmledition/img1041.png"/ width="800" height="auto"></p>
+		<p>Features with high mutual information scores for six Reuters-RCV1 classes<p>
+    </div>	
+
+    <div class="step" data-x="8000" data-y="12000" data-rotate="0" data-scale="1">		
+		<p class="center"><img src="http://nlp.stanford.edu/IR-book/html/htmledition/img1042.png"/ width="800" height="auto"></p>
+		<p>Effect of feature set size on accuracy for multinomial and Bernoulli models<p>
+    </div>
+	
     <div id="spelling-correction" class="step" data-x="6000" data-y="0">
       <h1>Spelling correction</h1>
       <h1>using Bayes Theorem<sup>*</sup></h1>
