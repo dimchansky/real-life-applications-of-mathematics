@@ -31,10 +31,10 @@
       MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
       // Shrink formulas that are wider than the slide content box.
       // Display formulas on one slide share a scale factor so they stay uniform.
-      MathJax.Hub.Register.StartupHook("End", function () {
+      function fitFormulas() {
         function shrink(math, factor) {
           var size = parseFloat(window.getComputedStyle(math).fontSize);
-          math.style.fontSize = (size * factor).toFixed(1) + "px";
+          math.style.fontSize = (Math.floor(size * factor * 10) / 10) + "px";
         }
         function boxWidth(math) {
           var box = math.parentNode;
@@ -60,6 +60,11 @@
             for (var k = 0; k < displays.length; k++) shrink(displays[k], factor);
           }
         }
+      }
+      // Fit again once MathJax web fonts have loaded, since they change the metrics.
+      MathJax.Hub.Register.StartupHook("End", function () {
+        fitFormulas();
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitFormulas);
       });
     </script>
     <script type="text/javascript"
