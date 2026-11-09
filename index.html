@@ -61,11 +61,34 @@
           }
         }
       }
-      // Fit again once MathJax web fonts have loaded, since they change the metrics.
+      // Shrink slides whose content is taller than the impress.js frame (768px).
+      function fitSlides() {
+        var maxHeight = 728;
+        var steps = document.querySelectorAll(".step");
+        for (var i = 0; i < steps.length; i++) {
+          var kids = steps[i].children;
+          var style = window.getComputedStyle(steps[i]);
+          var height = steps[i].scrollHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom);
+          if (height > maxHeight) {
+            var zoom = (Math.floor(1000 * maxHeight / height) / 1000).toString();
+            for (var k = 0; k < kids.length; k++) kids[k].style.zoom = zoom;
+          }
+        }
+      }
+      // Fit again once MathJax web fonts and images have loaded, since they change the metrics.
+      var mathReady = false;
+      function fitAll() {
+        var zoomed = document.querySelectorAll(".step > *");
+        for (var i = 0; i < zoomed.length; i++) zoomed[i].style.zoom = "";
+        if (mathReady) fitFormulas();
+        fitSlides();
+      }
       MathJax.Hub.Register.StartupHook("End", function () {
-        fitFormulas();
-        if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitFormulas);
+        mathReady = true;
+        fitAll();
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
       });
+      window.addEventListener("load", fitAll);
     </script>
     <script type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS_CHTML">
