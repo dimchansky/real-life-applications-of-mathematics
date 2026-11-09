@@ -29,6 +29,38 @@
     
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+      // Shrink formulas that are wider than the slide content box.
+      // Display formulas on one slide share a scale factor so they stay uniform.
+      MathJax.Hub.Register.StartupHook("End", function () {
+        function shrink(math, factor) {
+          var size = parseFloat(window.getComputedStyle(math).fontSize);
+          math.style.fontSize = (size * factor).toFixed(1) + "px";
+        }
+        function boxWidth(math) {
+          var box = math.parentNode;
+          while (box && window.getComputedStyle(box).display === "inline") box = box.parentNode;
+          return box ? box.clientWidth : 0;
+        }
+        var steps = document.querySelectorAll(".step");
+        for (var i = 0; i < steps.length; i++) {
+          var maths = steps[i].querySelectorAll(".MathJax_CHTML");
+          var displays = [], factor = 1;
+          for (var j = 0; j < maths.length; j++) {
+            var math = maths[j], avail = boxWidth(math), need = math.scrollWidth;
+            if (!avail || !need) continue;
+            var fit = avail / need;
+            if (/MJXc-display/.test(math.parentNode.className)) {
+              displays.push(math);
+              factor = Math.min(factor, fit);
+            } else if (fit < 1) {
+              shrink(math, fit);
+            }
+          }
+          if (factor < 1) {
+            for (var k = 0; k < displays.length; k++) shrink(displays[k], factor);
+          }
+        }
+      });
     </script>
     <script type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS_CHTML">
